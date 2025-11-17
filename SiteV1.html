@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comprendre et réduire le stress étudiant</title>
+  <meta name="description" content="Plateforme d'information, prévention et accompagnement pour le stress étudiant." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#98a0b3; --accent:#6ee7b7; --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.03);
+      --maxw:1100px; --radius:12px; --gap:18px; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:linear-gradient(180deg,#071025 0%, #071827 100%); color:#e6eef7; -webkit-font-smoothing:antialiased}
+    a{color:var(--accent-2); text-decoration:none}
+    header{backdrop-filter: blur(6px); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); position:sticky; top:0; z-index:40}
+    .container{max-width:var(--maxw); margin:0 auto; padding:18px}
+
+    /* Navbar */
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:44px; height:44px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#022; font-weight:700}
+    nav ul{display:flex; gap:14px; list-style:none; margin:0; padding:0}
+    nav li{font-size:15px}
+    .cta{background:var(--accent); color:#022; padding:8px 12px; border-radius:10px; font-weight:600}
+
+    /* Mobile */
+    .mobile-toggle{display:none; background:transparent; border:1px solid rgba(255,255,255,0.04); padding:8px; border-radius:10px}
+    @media (max-width:880px){
+      nav ul{display:none}
+      .mobile-toggle{display:inline-block}
+      .mobile-menu{display:none;}
+      .hero{padding:24px}
+    }
+
+    /* Hero */
+    .hero{padding:42px 0}
+    .hero-grid{display:grid; grid-template-columns:1fr 380px; gap:28px; align-items:start}
+    .card{background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:0 6px 24px rgba(3,6,12,0.6)}
+    .headline{font-size:28px; margin:0 0 8px}
+    .sub{color:var(--muted); margin:0 0 12px}
+    .quick-nums{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{background:var(--glass); padding:8px 10px; border-radius:999px; font-weight:600}
+
+    /* Sections */
+    section{padding:22px 0}
+    h2{margin:0 0 12px}
+    .cols{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .list{margin:0; padding-left:18px}
+    .resource a{display:block; margin:6px 0}
+
+    /* Footer */
+    footer{padding:22px 0; color:var(--muted)}
+
+    /* Card small lists */
+    .small{font-size:14px; color:var(--muted)}
+
+    /* Accordion */
+    .accordion button{width:100%; text-align:left; background:transparent; border:0; padding:12px 10px; font-size:15px; color:inherit}
+    .accordion .panel{padding:0 10px 12px; color:var(--muted)}
+
+    /* Contact form */
+    form{display:grid; gap:10px}
+    input,textarea,select{padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit}
+    button.primary{background:var(--accent-2); color:#022; padding:10px; border-radius:10px; border:0}
+
+    /* Utilities */
+    .muted{color:var(--muted)}
+    .stack{display:flex; flex-direction:column; gap:10px}
+
+    @media (max-width:880px){
+      .hero-grid{grid-template-columns:1fr;}
+      .cols{grid-template-columns:1fr}
+      .card{padding:14px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">SE</div>
+        <div>
+          <div style="font-weight:700">Comprendre & réduire le stress étudiant</div>
+          <div class="small muted">Informer • Prévenir • Accompagner</div>
+        </div>
+      </div>
+
+      <nav>
+        <button class="mobile-toggle" id="mobileBtn" aria-expanded="false">?</button>
+        <ul id="navList">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#sources">Sources</a></li>
+          <li><a href="#reduire">Comment réduire</a></li>
+          <li><a href="#ressources">Ressources</a></li>
+          <li><a href="#nums">Numéros</a></li>
+          <li><a href="#contact" class="cta">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- mobile menu -->
+    <div class="container mobile-menu card" id="mobileMenu" style="display:none">
+      <ul style="list-style:none; margin:0; padding:8px 0">
+        <li style="padding:8px 0"><a href="#accueil">Accueil</a></li>
+        <li style="padding:8px 0"><a href="#sources">Les grandes sources</a></li>
+        <li style="padding:8px 0"><a href="#reduire">Comment réduire</a></li>
+        <li style="padding:8px 0"><a href="#ressources">Ressources</a></li>
+        <li style="padding:8px 0"><a href="#nums">Numéros</a></li>
+        <li style="padding:8px 0"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="accueil" class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <h1 class="headline">Bienvenue — Plateforme dédiée au stress étudiant</h1>
+          <p class="sub">Informer, prévenir et accompagner les étudiants dans toutes les dimensions : académique, sociale, psychologique, économique et personnelle.</p>
+          <div class="stack">
+            <div class="quick-nums">
+              <span class="pill">Prévention suicide : 3114 (24/7)</span>
+              <span class="pill">Harcèlement : 3018</span>
+              <span class="pill">Violences sexistes : 3919</span>
+            </div>
+            <p class="muted">Ce site vous aide à : comprendre les sources du stress, reconnaître les signes, connaître vos droits et aides, améliorer organisation et hygiène de vie, découvrir les ressources en France.</p>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin:0 0 8px">Actions rapides</h3>
+          <div class="small muted">Si tu ne sais pas par où commencer :</div>
+          <ol style="padding-left:18px; margin:10px 0 0">
+            <li>Respire 4-4-4 : inspire 4s / retiens 4s / expire 4s</li>
+            <li>Parle à un pair (Nightline) ou un professionnel (Santé Psy Etudiants)</li>
+            <li>Planifie une petite tâche — 25 minutes max</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="card">
+        <h2>Les grandes sources de stress étudiant</h2>
+        <p class="muted">Ces facteurs reviennent fréquemment et peuvent fragiliser la santé mentale.</p>
+        <div class="cols" style="margin-top:12px">
+          <div>
+            <h3>Études & organisation</h3>
+            <ul class="list">
+              <li>Pression des résultats, examens</li>
+              <li>Recherche de stage / orientation</li>
+              <li>Projets et travail de groupe</li>
+              <li>Surcharge et manque d'organisation</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Vie personnelle & santé</h3>
+            <ul class="list">
+              <li>Isolement, conflits en colocation</li>
+              <li>Sommeil, fatigue chronique</li>
+              <li>Addictions, charge émotionnelle</li>
+              <li>Précarité financière</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reduire">
+      <div class="card">
+        <h2>Comment réduire le stress ?</h2>
+        <div class="cols" style="margin-top:12px">
+          <div>
+            <h3>A — Hygiène de vie</h3>
+            <ul class="list">
+              <li>Sommeil régulier (même heure coucher/lever)</li>
+              <li>Activité physique régulière (même 20 min)</li>
+              <li>Repas équilibrés et hydratation</li>
+              <li>Limiter écrans avant le coucher</li>
+            </ul>
+          </div>
+          <div>
+            <h3>B — Organisation & méthodes</h3>
+            <ul class="list">
+              <li>Planifier la semaine et fractionner les tâches</li>
+              <li>Méthode Pomodoro (25/5) pour avancer sans se saturer</li>
+              <li>Prioriser 3 tâches importantes par jour</li>
+              <li>Partager la charge : groupe d'étude, pairs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:14px" class="cols">
+          <div>
+            <h3>C — Santé mentale</h3>
+            <ul class="list">
+              <li>Parler de ses difficultés à un proche ou pro</li>
+              <li>Utiliser les 8 séances gratuites (Santé Psy Étudiants)</li>
+              <li>Repérer signes : anxiété, sommeil perturbé, isolement</li>
+            </ul>
+          </div>
+          <div>
+            <h3>D — Vie sociale</h3>
+            <ul class="list">
+              <li>S'impliquer dans une association / projet</li>
+              <li>Créer un réseau d'entraide et d'échange</li>
+              <li>Techniques rapides : ancrage, respiration, marche 10min</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ressources">
+      <div class="card">
+        <h2>Ressources et aides (France)</h2>
+        <p class="muted">Liens utiles et services gratuits.</p>
+        <div class="cols" style="margin-top:12px">
+          <div class="resource">
+            <h3>Aides alimentaires</h3>
+            <a href="https://www.crous.fr" target="_blank" rel="noopener">Crous — Repas étudiants dès 1€</a>
+            <a href="https://www.fage.org/agorae" target="_blank" rel="noopener">AGORAé — Épiceries solidaires</a>
+            <a href="https://www.restosducoeur.org" target="_blank" rel="noopener">Restos du Cœur</a>
+            <a href="https://www.banquealimentaire.org" target="_blank" rel="noopener">Banques Alimentaires</a>
+          </div>
+
+          <div class="resource">
+            <h3>Santé mentale & écoute</h3>
+            <a href="https://www.santepsy.etudiant.gouv.fr" target="_blank" rel="noopener">Santé Psy Étudiants — 8 séances gratuites</a>
+            <a href="https://www.nightline.fr" target="_blank" rel="noopener">Nightline — Écoute par des étudiants</a>
+            <a href="https://www.filsantejeunes.com" target="_blank" rel="noopener">Fil Santé Jeunes</a>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="cols">
+          <div>
+            <h3>Logement et aides</h3>
+            <a href="https://www.visale.fr" target="_blank" rel="noopener">Visale — Garant gratuit</a>
+            <a href="https://www.caf.fr" target="_blank" rel="noopener">CAF — APL, ALS</a>
+            <a href="https://www.service-public.fr" target="_blank" rel="noopener">Service-Public — Démarches</a>
+            <a href="https://www.crous.fr/logement/" target="_blank" rel="noopener">Crous — Logements universitaires</a>
+          </div>
+          <div>
+            <h3>Santé & sexualité</h3>
+            <a href="https://www.planning-familial.org" target="_blank" rel="noopener">Planning Familial</a>
+            <a href="https://www.sante.fr/trouver-un-cegidd/" target="_blank" rel="noopener">Centres de dépistage (CeGIDD)</a>
+            <a href="https://www.ameli.fr" target="_blank" rel="noopener">Ameli — Remboursements</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="nums">
+      <div class="card">
+        <h2>Numéros d'assistance</h2>
+        <div class="stack" style="margin-top:8px">
+          <div><strong>Prévention suicide :</strong> <a href="tel:3114">3114</a> — 24/7 — gratuit</div>
+          <div><strong>Harcèlement / cyberharcèlement :</strong> <a href="tel:3018">3018</a> — 7/7 — gratuit</div>
+          <div><strong>Violences sexistes / sexuelles :</strong> <a href="tel:3919">3919</a> — anonyme — gratuit</div>
+          <div><strong>Drogues / addictions :</strong> <a href="tel:0800231313">0 800 23 13 13</a> — gratuit</div>
+          <div><strong>Santé mentale jeune :</strong> <a href="tel:0800235236">0 800 235 236</a> — gratuit</div>
+          <div><strong>Numéro d'urgence européen :</strong> <a href="tel:112">112</a> — 24/7</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h2>Contact</h2>
+        <p class="muted">Pour proposer une ressource, signaler une erreur ou demander des partenariats.</p>
+        <div style="display:grid; grid-template-columns:1fr 360px; gap:16px; margin-top:12px">
+          <form onsubmit="sendForm(event)">
+            <input type="text" id="name" placeholder="Ton prénom" required />
+            <input type="email" id="email" placeholder="Ton email" required />
+            <textarea id="message" rows="5" placeholder="Message" required></textarea>
+            <button class="primary" type="submit">Envoyer</button>
+            <div id="formStatus" class="small muted" style="margin-top:8px"></div>
+          </form>
+
+          <div class="card small">
+            <h4 style="margin:0 0 8px">Infos utiles</h4>
+            <div>Organisation : équipe étudiante — projet Design Thinking</div>
+            <div style="margin-top:8px">Email : <a href="mailto:contact@stress-etudiant.example">contact@stress-etudiant.example</a></div>
+            <div style="margin-top:8px">Mentions : Ce site informe et oriente, il ne remplace pas un avis médical.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+        <div class="small muted">© Projet Design Thinking — Plateforme Stress Étudiant</div>
+        <div class="small muted">Version prototype • Liens officiels fournis pour l'orientation</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn && mobileBtn.addEventListener('click', ()=>{
+      const open = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = open ? 'none' : 'block';
+      mobileBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+          // close mobile menu after click
+          if(window.innerWidth<=880) mobileMenu.style.display='none';
+        }
+      })
+    });
+
+    // Mock form send (no backend). Replace with your endpoint.
+    function sendForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const status = document.getElementById('formStatus');
+      if(!name||!email||!msg){ status.textContent='Merci de compléter tous les champs.'; return; }
+      // For now, we just show a success message. Integrate with your server to store messages.
+      status.style.color='var(--accent-2)';
+      status.textContent='Message envoyé — merci ! (formulaire en local, à connecter au serveur)';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
